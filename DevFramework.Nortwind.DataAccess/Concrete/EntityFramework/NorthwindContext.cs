@@ -5,6 +5,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DevFramework.Nortwind.DataAccess.Concrete.EntityFramework.Mappings;
 using DevFramework.Nortwind.Entities.Concrete;
 
 namespace DevFramework.Nortwind.DataAccess.Concrete.EntityFramework
@@ -17,7 +18,11 @@ namespace DevFramework.Nortwind.DataAccess.Concrete.EntityFramework
         }
         public DbSet<Product> Products { get; set; }
         // Mapping yapılcak.
-        
-        // Ders 14 de kaldım. Ordan devam ederim yarın.
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Configurations.Add(new ProductMap());
+            //  
+        }
     }
 }
