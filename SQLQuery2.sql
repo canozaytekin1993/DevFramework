@@ -1,0 +1,1 @@
+﻿SELECT COUNT(*) FROM dbo.Products WHERE	ProductName LIKE '%ab%'

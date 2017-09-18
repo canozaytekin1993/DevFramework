@@ -1,5 +1,4 @@
 ﻿using DevFramework.Core.DataAccess;
-using DevFramework.Nortwind.Entities.ComplexTypes;
 using DevFramework.Nortwind.Entities.Concrete;
 using System;
 using System.Collections.Generic;
@@ -9,8 +8,8 @@ using System.Threading.Tasks;
 
 namespace DevFramework.Nortwind.DataAccess.Abstract
 {
-    public interface IProductDal:IEntityRepository<Product>
+    public interface ICategoryDal:IEntityRepository<Category>
     {
-        List<ProductDetail> GetProductDetails();
+
     }
 }
