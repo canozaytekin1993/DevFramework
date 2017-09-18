@@ -6,8 +6,11 @@ using DevFramework.Nortwind.DataAccess.Abstract;
 using DevFramework.Nortwind.Entities.Concrete;
 using System.Collections.Generic;
 using System.Transactions;
+using DevFramework.Core.Aspects.Postsharp.CacheAspects;
 using DevFramework.Core.Aspects.Postsharp.TransactionAspects;
+using DevFramework.Core.CrossCuttingConcerns.Caching.Microsoft;
 using DevFramework.Core.DataAccess;
+using Ninject.Activation.Caching;
 
 namespace DevFramework.Nortwind.Business.Concrate.Managers
 {
@@ -20,6 +23,8 @@ namespace DevFramework.Nortwind.Business.Concrate.Managers
         {
             _productDal = productDal;
         }
+
+        [CacheAspect(typeof(MemoryCacheManager),60)]
         public List<Product> GetAll()
         {
             return _productDal.GetList();
@@ -29,12 +34,15 @@ namespace DevFramework.Nortwind.Business.Concrate.Managers
         {
             return _productDal.Get(p => p.ProductId == id);
         }
+
         [FluentValidationAspect(typeof(ProductValidatior))]
+        [CacheRemoveAspect(typeof(MemoryCacheManager))]
         public Product Add(Product product)
         {
 
             return _productDal.Add(product);
         }
+
         [FluentValidationAspect(typeof(ProductValidatior))]
         public Product Update(Product product)
         {
@@ -50,7 +58,6 @@ namespace DevFramework.Nortwind.Business.Concrate.Managers
                 //  Business Codes
                 _productDal.Update(product2);
             }
-
         }
     }
 }
