@@ -13,7 +13,7 @@ namespace DevFramework.Core.Aspects.Postsharp.CacheAspects
         private int _cacheByMinute;
         private ICacheManager _cacheManager;
 
-        public CacheAspect(Type cacheType, int cacheByMinute)
+        public CacheAspect(Type cacheType, int cacheByMinute=60)
         {
             _cacheType = cacheType;
             _cacheByMinute = cacheByMinute;
