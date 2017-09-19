@@ -6,6 +6,7 @@ using System.Reflection;
 
 namespace DevFramework.Core.Aspects.Postsharp.CacheAspects
 {
+    [Serializable]
     public class CacheAspect:MethodInterceptionAspect
     {
         private Type _cacheType;
@@ -32,7 +33,8 @@ namespace DevFramework.Core.Aspects.Postsharp.CacheAspects
         {
             var methodName = string.Format("{0}.{1}.{2}",
                 args.Method.ReflectedType.Namespace,
-                args.Method.ReflectedType.Name:_pattern);
+                args.Method.ReflectedType.Name,
+                args.Method.Name);
             var arguments = args.Arguments.ToList();
 
             var key = string.Format("{0}({1})", methodName,

@@ -2,7 +2,6 @@
 using log4net.Core;
 using log4net.Layout;
 using Newtonsoft.Json;
-using Formatting = System.Xml.Formatting;
 
 namespace DevFramework.Core.CrossCuttingConcerns.Logging.Log4Net.Layout
 {
