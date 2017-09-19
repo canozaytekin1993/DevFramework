@@ -7,8 +7,10 @@ using DevFramework.Nortwind.Entities.Concrete;
 using System.Collections.Generic;
 using System.Transactions;
 using DevFramework.Core.Aspects.Postsharp.CacheAspects;
+using DevFramework.Core.Aspects.Postsharp.LogAspects;
 using DevFramework.Core.Aspects.Postsharp.TransactionAspects;
 using DevFramework.Core.CrossCuttingConcerns.Caching.Microsoft;
+using DevFramework.Core.CrossCuttingConcerns.Logging.Log4Net.Loggers;
 using DevFramework.Core.DataAccess;
 using Ninject.Activation.Caching;
 
@@ -25,6 +27,7 @@ namespace DevFramework.Nortwind.Business.Concrate.Managers
         }
 
         [CacheAspect(typeof(MemoryCacheManager),60)]
+        [LogAspect(typeof(DatabaseLogger))]
         public List<Product> GetAll()
         {
             return _productDal.GetList();
@@ -48,6 +51,7 @@ namespace DevFramework.Nortwind.Business.Concrate.Managers
         {
             return _productDal.Update(product);
         }
+
 
         [TransactionScopeAspect]
         public void TransactionalOperation(Product product1, Product product2)
