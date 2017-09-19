@@ -16,9 +16,9 @@ namespace DevFramework.Nortwind.Business.ValidationRules.FluentValidation
             RuleFor(p => p.ProductName).NotEmpty();
             RuleFor(p => p.UnitPrice).GreaterThan(0);
             RuleFor(p => p.QuantityPerUnit).NotEmpty();
-            RuleFor(p => p.ProductName).Length(20);
+            RuleFor(p => p.ProductName).Length(2,20);
             RuleFor(p => p.UnitPrice).GreaterThan(20).When(p => p.CategoryId == 1);
-            RuleFor(p => p.ProductName).Must(StartWithA);
+            //RuleFor(p => p.ProductName).Must(StartWithA);
         }
 
         private bool StartWithA(string arg)

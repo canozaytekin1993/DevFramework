@@ -27,8 +27,6 @@ namespace DevFramework.Nortwind.Business.Concrate.Managers
         }
 
         [CacheAspect(typeof(MemoryCacheManager),60)]
-        [LogAspect(typeof(DatabaseLogger))]
-        [LogAspect(typeof(FileLogger))]
         public List<Product> GetAll()
         {
             return _productDal.GetList();
@@ -43,7 +41,6 @@ namespace DevFramework.Nortwind.Business.Concrate.Managers
         [CacheRemoveAspect(typeof(MemoryCacheManager))]
         public Product Add(Product product)
         {
-
             return _productDal.Add(product);
         }
 
@@ -55,6 +52,7 @@ namespace DevFramework.Nortwind.Business.Concrate.Managers
 
 
         [TransactionScopeAspect]
+        [FluentValidationAspect(typeof(ProductValidatior))]
         public void TransactionalOperation(Product product1, Product product2)
         {
             using (TransactionScope scope = new TransactionScope())

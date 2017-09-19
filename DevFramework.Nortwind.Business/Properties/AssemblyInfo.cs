@@ -1,6 +1,8 @@
 ﻿using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
+using DevFramework.Core.Aspects.Postsharp.LogAspects;
+using DevFramework.Core.CrossCuttingConcerns.Logging.Log4Net.Loggers;
 
 // Bir bütünleştirilmiş koda ilişkin Genel Bilgiler aşağıdaki öznitelikler kümesiyle
 // denetlenir. Bütünleştirilmiş kod ile ilişkili bilgileri değiştirmek için
@@ -13,6 +15,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyCopyright("Copyright ©  2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
+[assembly: LogAspect(typeof(DatabaseLogger),AttributeTargetTypes = "DevFramework.Nortwind.Business.Concrete.Managers.*")]
 
 // ComVisible özniteliğinin false olarak ayarlanması bu bütünleştirilmiş koddaki türleri
 // COM bileşenleri için görünmez yapar. Bu bütünleştirilmiş koddaki bir türe
