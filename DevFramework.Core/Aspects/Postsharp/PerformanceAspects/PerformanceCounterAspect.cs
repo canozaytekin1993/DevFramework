@@ -14,6 +14,7 @@ namespace DevFramework.Core.Aspects.Postsharp.PerformanceAspects
     public class PerformanceCounterAspect:OnMethodBoundaryAspect
     { 
         private int _interval;
+        [NonSerialized()]
         private Stopwatch _stopwatch;
 
         public PerformanceCounterAspect(int interval=5)
