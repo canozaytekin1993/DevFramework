@@ -50,7 +50,7 @@ namespace DevFramework.Core.CrossCuttingConcerns.Security.Web
             stringBuilder.Append(lastName);
             stringBuilder.Append("|");
             stringBuilder.Append(id);
-            return stringBuilder.ToString()
+            return stringBuilder.ToString();
         }
     }
 }
